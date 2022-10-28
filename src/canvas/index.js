@@ -10,7 +10,6 @@ import {
 	TorusKnotGeometry,
 	BufferAttribute,
 	Vector4,
-	BufferGeometry,
 } from "three";
 import * as TWEEN from "@tweenjs/tween.js";
 
@@ -34,7 +33,6 @@ class Canvas {
 			new TorusKnotGeometry(1, 3, 100, 16),
 		];
 		this.count = 0;
-		this.frames = 0;
 
 		const sphereGeo = new SphereGeometry(2, 32, 32);
 		const ver = [];
@@ -56,7 +54,6 @@ class Canvas {
 
 		// Set Attributes
 		this.renderer.setClearColor(this.backgroundColor, 0);
-		// this.sphere.position.x = 5;
 		this.camera.position.z = 10;
 		this.directionalLight.position.y = 5;
 		this.directionalLight.position.z = 2;
@@ -70,63 +67,16 @@ class Canvas {
 		document
 			.querySelector(this.selector)
 			.appendChild(this.renderer.domElement);
+		
 		window.addEventListener("resize", this.resize.bind(this));
 		window.addEventListener("mousemove", this.mouseMove.bind(this));
 		window.addEventListener("click", this.mouseClick.bind(this));
 		window.addEventListener("scroll", this.scroll.bind(this));
 		this.resize();
 		this.init(this.geometries[this.count]);
-		this.initializePlane();
 	}
 
-	initializePlane() {
-		const ver = [];
-		this.length = 128;
-		const scale = 50;
-		for (let i = 0; i < this.length; i++) {
-			for (let j = 0; j < this.length; j++) {
-				ver.push(
-					scale * (i / this.length - 0.5),
-					0,
-					scale * (j / this.length - 0.5)
-				);
-			}
-		}
-		const vertices = new Float32Array(ver);
-		const geometry = new BufferGeometry();
-		geometry.setAttribute("position", new BufferAttribute(vertices, 3));
-		this.plane = new Points(
-			geometry,
-			new PointsMaterial({ color: 0x000, size: 0.075, opacity: 1 })
-		);
-		this.plane.position.y = -20;
-
-		this.scene.add(this.plane);
-	}
-
-	animatePlane() {
-		const vertices = this.plane.geometry.attributes["position"];
-		var index = 0;
-
-		for (var i = 0; i < this.length; i += 1) {
-			for (var j = 0; j < this.length; j += 1) {
-				const obj = {
-					x: vertices.getX(index),
-					y: vertices.getY(index),
-					z: vertices.getZ(index),
-					w: vertices.getW(index),
-				};
-				obj.y =
-					Math.sin(((i + this.frames + index) * 0.003 + index) * 2) +
-					Math.sin(((j + this.frames + index) * 0.0025 + index) * 2);
-
-				vertices.setXYZW(index, obj.x, obj.y, obj.z, obj.w);
-				index++;
-			}
-		}
-		vertices.needsUpdate = true;
-		this.frames += 1;
-	}
+	
 
 	init(geo) {
 		const vertices = this.sphere.geometry.attributes["position"];
@@ -194,8 +144,6 @@ class Canvas {
 	}
 
 	animate() {
-		this.animatePlane();
-
 		this.render();
 		window.requestAnimationFrame(this.animate.bind(this));
 	}
