@@ -1,0 +1,306 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@-webkit-keyframes reveal {
+  0% {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+  100% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+}
+@keyframes reveal {
+  0% {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+  100% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+html,
+body {
+  scroll-behavior: smooth !important;
+}
+
+body {
+  min-height: 100vh;
+  color: white !important;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background: url("../assets/blob-scene-haikei.svg");
+  background-size: cover;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 12;
+  pointer-events: none;
+}
+
+section {
+  min-height: 100vh;
+}
+
+.btn {
+  background: none;
+  padding: 0.5em 1em;
+  border: 1px solid white;
+  color: white;
+  margin: 2em;
+  font-weight: bolder;
+  font-size: 16px;
+  text-transform: uppercase;
+  -webkit-transition-duration: 200ms;
+          transition-duration: 200ms;
+  text-decoration: none;
+}
+
+.btn:hover {
+  color: black;
+  background: white;
+  -webkit-box-shadow: 0 0 15px 1px white;
+          box-shadow: 0 0 15px 1px white;
+}
+
+#home {
+  position: relative;
+}
+
+#home nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1em 1em;
+}
+
+#home nav .nav-brand {
+  color: white !important;
+  font-weight: bolder;
+  text-decoration: none;
+  font-size: 22px;
+  padding: 0 2em;
+  text-transform: uppercase;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#home nav .nav-brand img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  padding: 0 0.5em;
+}
+
+#home nav .links {
+  padding: 0.5em;
+}
+
+#home nav .links a {
+  padding: 0 2em;
+  color: white !important;
+  text-decoration: none;
+}
+
+#home nav .links .active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#home .container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#home .container h1 {
+  font-size: 72px;
+  font-weight: bolder;
+  text-transform: uppercase;
+  text-align: center;
+  -webkit-clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+          clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+}
+
+#home .container h1 .char {
+  display: inline-block;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-animation: reveal 300ms ease-in-out forwards;
+          animation: reveal 300ms ease-in-out forwards;
+  -webkit-animation-delay: calc(1s + var(--char-index) * 100ms);
+          animation-delay: calc(1s + var(--char-index) * 100ms);
+}
+
+#home .container h3 {
+  font-size: 32px;
+  font-weight: 300;
+  text-align: center;
+  -webkit-clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+          clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+}
+
+#home .container h3 .char {
+  display: inline-block;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-animation: reveal 300ms ease-in-out forwards;
+          animation: reveal 300ms ease-in-out forwards;
+  -webkit-animation-delay: calc( var(--char-total) * 65ms + var(--char-index) * 25ms);
+          animation-delay: calc( var(--char-total) * 65ms + var(--char-index) * 25ms);
+}
+
+#about {
+  background: white;
+  color: black !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#about .cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  padding: 2em;
+}
+
+#about .cards .card {
+  border: 1px solid #f0f0f0;
+  padding: 1em;
+  border-radius: 15px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  width: 75%;
+  margin: 1em;
+  background: white;
+  z-index: 15;
+  -webkit-transition-duration: 200ms;
+          transition-duration: 200ms;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#about .cards .card:hover {
+  -webkit-box-shadow: 0 0 15px 1px gainsboro;
+          box-shadow: 0 0 15px 1px gainsboro;
+  border: 1px solid white;
+}
+
+#about .cards .card .card-img img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+#about .cards .card .card-body {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+#about .cards .card .card-body .card-title {
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+#about .profile {
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 2em;
+  padding: 2em;
+}
+
+#about .profile h1 {
+  font-size: 48px;
+  font-weight: bolder;
+  text-align: center;
+}
+
+#about .profile h3 {
+  font-weight: normal;
+  text-align: center;
+  margin: 1em;
+}
+/*# sourceMappingURL=styles.css.map */
